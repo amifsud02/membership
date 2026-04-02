@@ -1,61 +1,59 @@
 <x-guest-layout>
-    <div class="mb-10 text-center">
-        <h2 class="text-3xl font-black text-slate-900 mb-2">Welcome Back</h2>
-        <p class="text-slate-400 font-medium">Please enter your details to sign in.</p>
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-dark mb-2 font-heading">Welcome back</h2>
+        <p class="text-muted text-sm">Enter your credentials to access your account.</p>
     </div>
 
     <!-- Session Status -->
     <x-auth-session-status
-        class="mb-6 rounded-2xl bg-indigo-50 p-4 text-indigo-700 text-sm font-bold border border-indigo-100"
+        class="mb-6 rounded-2xl bg-primary/5 p-4 text-primary text-sm font-semibold border border-primary/10"
         :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}" class="space-y-6">
+    <form method="POST" action="{{ route('login') }}" class="space-y-5">
         @csrf
 
         <!-- Email Address -->
-        <div class="space-y-2">
-            <label for="email" class="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email
-                Address</label>
+        <div class="space-y-1.5">
+            <label for="email" class="text-xs font-semibold text-muted uppercase tracking-wider">Email Address</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
-                class="block w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-[20px] focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-bold text-slate-900"
+                class="block w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-sm font-medium text-dark placeholder:text-gray-400"
                 placeholder="name@example.com">
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-error :messages="$errors->get('email')" class="mt-1" />
         </div>
 
         <!-- Password -->
-        <div class="space-y-2">
-            <div class="flex justify-between items-center pl-1">
-                <label for="password"
-                    class="text-xs font-black text-slate-400 uppercase tracking-widest">Password</label>
+        <div class="space-y-1.5">
+            <div class="flex justify-between items-center">
+                <label for="password" class="text-xs font-semibold text-muted uppercase tracking-wider">Password</label>
                 @if (Route::has('password.request'))
-                    <a class="text-xs font-bold text-primary hover:underline" href="{{ route('password.request') }}">
-                        Forgot?
+                    <a class="text-xs font-semibold text-primary hover:underline" href="{{ route('password.request') }}">
+                        Forgot password?
                     </a>
                 @endif
             </div>
             <input id="password" type="password" name="password" required
-                class="block w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-[20px] focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-bold text-slate-900"
-                placeholder="••••••••">
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                class="block w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-sm font-medium text-dark placeholder:text-gray-400"
+                placeholder="Enter your password">
+            <x-input-error :messages="$errors->get('password')" class="mt-1" />
         </div>
 
         <!-- Remember Me -->
-        <label for="remember_me" class="inline-flex items-center group cursor-pointer pl-1">
+        <label for="remember_me" class="inline-flex items-center group cursor-pointer">
             <input id="remember_me" type="checkbox"
-                class="w-5 h-5 rounded-lg border-slate-200 text-primary focus:ring-primary shadow-sm transition-all"
+                class="w-4 h-4 rounded-md border-gray-300 text-primary focus:ring-primary/20 shadow-sm transition-all"
                 name="remember">
-            <span class="ms-3 text-sm font-bold text-slate-500 group-hover:text-slate-700 transition-colors">Remember
-                this device</span>
+            <span class="ms-2.5 text-sm font-medium text-muted group-hover:text-dark transition-colors">Remember me</span>
         </label>
 
         <button type="submit"
-            class="w-full py-5 bg-slate-900 text-white font-black rounded-[24px] hover:bg-primary transition-all shadow-xl shadow-slate-200 hover:shadow-primary/30 transform hover:-translate-y-1">
+            class="w-full py-4 bg-dark text-white font-bold rounded-2xl hover:bg-primary transition-all text-sm tracking-wide uppercase">
             Sign In
+            <svg class="w-4 h-4 ml-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
 
-        <p class="text-center text-sm font-bold text-slate-400 mt-8">
+        <p class="text-center text-sm text-muted mt-6">
             Don't have an account?
-            <a href="{{ route('register') }}" class="text-primary hover:underline">Create one free</a>
+            <a href="{{ route('register') }}" class="font-semibold text-primary hover:underline">Create one free</a>
         </p>
     </form>
 </x-guest-layout>

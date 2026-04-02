@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Enums\UserRole;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/login', '/admin/login')->name('login');
+// Login is now handled by the standard auth routes in auth.php
 
 Route::get('/', function () {
     return view('welcome');

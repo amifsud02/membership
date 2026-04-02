@@ -18,13 +18,14 @@ class RegisteredUserController extends Controller
     // Generic / Customer registration
     // ─────────────────────────────────────────
 
-    public function create(Request $request): View
+    public function create(): View
     {
-        if ($request->role === 'customer') {
-            return view('auth.register-customer');
-        }
-
         return view('auth.register');
+    }
+
+    public function createCustomer(): View
+    {
+        return view('auth.register-customer');
     }
 
     public function store(Request $request): RedirectResponse
